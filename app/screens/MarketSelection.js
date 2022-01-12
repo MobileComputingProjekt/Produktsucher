@@ -25,7 +25,7 @@ export default function MarketSelection({ navigation }) {
             MarketArea: '50667 Köln',
             MarketLogo: '../assets/logo.png',
             Products:[
-            {
+            { 
                 ExampleProduct: 'Frischer Hummer',
                 ExamplePrice:'39,99€',
             },
