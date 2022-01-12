@@ -24,12 +24,23 @@ export default function MarketSelection({ navigation }) {
             MarketStreet: 'Hauptstraße 12',
             MarketArea: '50667 Köln',
             MarketLogo: '../assets/logo.png',
-            ExampleProduct: 'Frischer Hummer',
-            ExamplePrice:'39,99€',
-            ExampleProduct2: 'BIO Nudeln',
-            ExamplePrice2:'2,50€',
-            ExampleProduct3: 'Seelachsmuß',
-            ExamplePrice3:'3,99€',
+            Products:[
+            {
+                ExampleProduct: 'Frischer Hummer',
+                ExamplePrice:'39,99€',
+            },
+            {
+                ExampleProduct2: 'BIO Nudeln',
+                ExamplePrice2:'2,50€',
+            },
+            {
+                ExampleProduct3: 'Seelachsmuß',
+                ExamplePrice3:'3,99€',
+            },
+            ]
+            
+            
+            
         },
         {
             key:'Map2Key',
@@ -38,12 +49,23 @@ export default function MarketSelection({ navigation }) {
             MarketStreet: 'Erasmusweg 34',
             MarketArea: '46325 Borken',
             MarketLogo: '../assets/logo.png',
-            ExampleProduct: 'Hammer',
-            ExamplePrice:'24,99€',
-            ExampleProduct2: 'Handsäge',
-            ExamplePrice2:'49,99€',
-            ExampleProduct3: 'Gartenvlies',
-            ExamplePrice3:'54,99€',
+            Products:[
+                {
+                    ExampleProduct: 'Hammer',
+                    ExamplePrice:'24,99€',
+                },
+                {
+                    ExampleProduct: 'Handsäge',
+                    ExamplePrice:'49,99€',
+                },
+                {
+                    ExampleProduct: 'Gartenvlies',
+                    ExamplePrice:'54,99€',
+                },
+            ]
+           
+            
+
             
         }
     ]);
@@ -52,7 +74,7 @@ export default function MarketSelection({ navigation }) {
         <View style={styles.container}>
         <View style={styles.headermenu}>
 
-            <Text style={[styles.white]}>Logo</Text>
+            <Image source = {require("../assets/icon.png")} style={[styles.headerLogo]}/>
             <Text style={[styles.white]}>Markt auswählen</Text>
             <TouchableOpacity
             
@@ -149,15 +171,20 @@ const styles = StyleSheet.create({
     flex:0.15,
     justifyContent:"flex-start",
     backgroundColor:"#274156",
-    margin:5
+    margin:5,
+    borderWidth:1
     
    },
    logo:{
     resizeMode:"contain",
-    flex:4, 
-    width: undefined, 
-    height: undefined,
-    backgroundColor:"black",
+    width: 80, 
+    height: 80,
+
+   },
+   headerLogo:{
+    resizeMode: "contain",
+    height:40,
+    width:40
    },
    text:{
        flex:10,
