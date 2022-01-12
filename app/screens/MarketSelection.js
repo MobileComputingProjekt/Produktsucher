@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
     StyleSheet, 
     Text, 
@@ -9,13 +9,46 @@ import {
     Alert, 
     TouchableOpacity,
     ScrollView,
+    FlatList,
     SafeAreaView
 } from 'react-native'
 import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes'
 import { useNavigationn, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 export default function MarketSelection({ navigation }) {
+    const [Market, setMarket] = useState([
+        {
+            key:'Map1Key',
+            MapPath: '../assets/Map1.png',
+            MarketName: 'Supermarkt XY',
+            MarketStreet: 'Hauptstraße 12',
+            MarketArea: '50667 Köln',
+            MarketLogo: '../assets/logo.png',
+            ExampleProduct: 'Frischer Hummer',
+            ExamplePrice:'39,99€',
+            ExampleProduct2: 'BIO Nudeln',
+            ExamplePrice2:'2,50€',
+            ExampleProduct3: 'Seelachsmuß',
+            ExamplePrice3:'3,99€',
+        },
+        {
+            key:'Map2Key',
+            MapPath: '../assets/Map2.png',
+            MarketName: 'Baumarkt XY',
+            MarketStreet: 'Erasmusweg 34',
+            MarketArea: '46325 Borken',
+            MarketLogo: '../assets/logo.png',
+            ExampleProduct: 'Hammer',
+            ExamplePrice:'24,99€',
+            ExampleProduct2: 'Handsäge',
+            ExamplePrice2:'49,99€',
+            ExampleProduct3: 'Gartenvlies',
+            ExamplePrice3:'54,99€',
+            
+        }
+    ]);
     return (
+    
         <View style={styles.container}>
         <View style={styles.headermenu}>
 
@@ -32,21 +65,32 @@ export default function MarketSelection({ navigation }) {
             </TouchableOpacity>
             
         </View>
-        <ScrollView style={styles.textbody}>
-        <TouchableOpacity 
-        style={styles.marketObject}  
-        onPress={()=> navigation.navigate('Product')}
-        activeOpacity={.8}>
-        <Image source = {require("../assets/icon.png")}style={styles.logo}/>
-        <View style={styles.text}>
-        <Text style={[styles.white]}>DB Markt name</Text>
-        <Text style={[styles.white]}>DB Markt Straße</Text>
-        <Text style={[styles.white]}>DB Markt PLZ/Ort</Text>
-        </View>
         
         
-        </TouchableOpacity>
-        </ScrollView>
+        <FlatList 
+        style = {styles.textbody}
+            data={Market}
+            renderItem={({ item }) => (
+                
+                <TouchableOpacity 
+                onPress={() =>navigation.navigate('Product', item)}
+                activeOpacity={.8}
+                style={styles.marketObject}
+                >
+                <Image source = {require("../assets/icon.png")}style={styles.logo}/>
+                    <View style={styles.text}>
+                        <Text style={[styles.white]}>{item.MarketName}</Text>
+                        <Text style={[styles.white]}>{item.MarketStreet}</Text>
+                        <Text style={[styles.white]}>{item.MarketArea}</Text>
+                    </View>   
+                </TouchableOpacity>
+            )}
+        />
+
+
+
+
+       
         <View style={styles.footermenu}>
         <TouchableOpacity 
             onPress={()=> navigation.navigate('Market')}
@@ -105,6 +149,7 @@ const styles = StyleSheet.create({
     flex:0.15,
     justifyContent:"flex-start",
     backgroundColor:"#274156",
+    margin:5
     
    },
    logo:{
