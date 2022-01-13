@@ -30,12 +30,12 @@ export default function MarketSelection({ navigation }) {
                 ExamplePrice:'39,99€',
             },
             {
-                ExampleProduct2: 'BIO Nudeln',
-                ExamplePrice2:'2,50€',
+                ExampleProduct: 'BIO Nudeln',
+                ExamplePrice:'2,50€',
             },
             {
-                ExampleProduct3: 'Seelachsmuß',
-                ExamplePrice3:'3,99€',
+                ExampleProduct: 'Seelachsmuß',
+                ExamplePrice:'3,99€',
             },
             ]
             
