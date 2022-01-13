@@ -19,55 +19,54 @@ export default function MarketSelection({ navigation }) {
     const [Market, setMarket] = useState([
         {
             key:'Map1Key',
-            MapPath: '../assets/Map1.png',
             MarketName: 'Supermarkt XY',
             MarketStreet: 'Hauptstraße 12',
             MarketArea: '50667 Köln',
             MarketLogo: '../assets/logo.png',
-            Products:[
-            { 
+            Products:[{ 
+                key:'p1',
                 ExampleProduct: 'Frischer Hummer',
                 ExamplePrice:'39,99€',
+                MapPath: '../assets/Map1.png',
             },
             {
+                key:'p2',
                 ExampleProduct: 'BIO Nudeln',
                 ExamplePrice:'2,50€',
+                MapPath: '../assets/Map1.png',
             },
             {
+                key:'p3',
                 ExampleProduct: 'Seelachsmuß',
                 ExamplePrice:'3,99€',
+                MapPath: '../assets/Map1.png',
             },
-            ]
-            
-            
-            
-        },
+            ]},
         { 
             key:'Map2Key',
-            MapPath: '../assets/Map2.png',
             MarketName: 'Baumarkt XY',
             MarketStreet: 'Erasmusweg 34',
             MarketArea: '46325 Borken',
             MarketLogo: '../assets/logo.png',
-            Products:[
-                {
+            Products:[{
+                    key:'p1',
                     ExampleProduct: 'Hammer',
                     ExamplePrice:'24,99€',
+                    MapPath: '../assets/Map2.png',
                 },
                 {
+                    key:'p2',
                     ExampleProduct: 'Handsäge',
                     ExamplePrice:'49,99€',
+                    MapPath: '../assets/Map2.png',
                 },
                 {
+                    key:'p3',
                     ExampleProduct: 'Gartenvlies',
                     ExamplePrice:'54,99€',
+                    MapPath: '../assets/Map2.png',
                 },
-            ]
-           
-            
-
-            
-        }
+            ]}
     ]);
     return (
     

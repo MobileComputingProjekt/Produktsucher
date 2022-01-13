@@ -16,7 +16,7 @@ import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNat
 import { useNavigationn, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 export default function ProductSelection({ route, navigation }) {
-const { key, MapPath, MarketName, MarketStreet, Products} = route.params;
+const { MapPath, MarketName, Products} = route.params;
     return (
         <View style={styles.container}>
         <View style={styles.headermenu}>
