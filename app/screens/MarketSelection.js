@@ -120,6 +120,7 @@ export default function MarketSelection({ navigation }) {
             <Text style={[styles.white]}>Markt</Text>
             </TouchableOpacity>
             <TouchableOpacity 
+            disabled={true}
             onPress={()=> navigation.navigate('Map')}
             activeOpacity={.8}
             style={[styles.whitemenu]}>
@@ -197,14 +198,13 @@ const styles = StyleSheet.create({
    whitemenu: {
     color: 'white',
     flex:0.3,
-    textAlign:"center",
     padding:15,
     borderWidth: 1,
     backgroundColor:"#274156"
   },
   white: {
     color: 'white',
- 
+    
     
   },
   searchBar:{

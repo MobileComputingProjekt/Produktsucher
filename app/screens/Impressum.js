@@ -15,37 +15,43 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 export default function Impressum({ navigation }) {
     return (
         <ScrollView>
-            <Text>
-Impressum
+            <Text style={styles.textbody}>
+Impressum {"\n"}
 
-Angaben gemäß § 5 TMG
+Angaben gemäß § 5 TMG {"\n"}
 
-Vertreten durch:
-Torsten Haas
-Khalid Benmahria
+Vertreten durch: {"\n"}
+Torsten Haas {"\n"}
+Khalid Benmahria {"\n"}
 
-Kontakt:
-E-Mail: torsten.haas@stud.hs-ruhrwest.de
+Kontakt: {"\n"}
+E-Mail: torsten.haas@stud.hs-ruhrwest.de {"\n"}
+</Text>
+<Text style={styles.textbody}>
+Haftungsausschluss: {"\n"}
 
-Haftungsausschluss:
+Haftung für Inhalte {"\n"}
 
-Haftung für Inhalte
-
-Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. 
-Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. 
+Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. {"\n"}
+Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. {"\n"}
 Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen 
-Gesetzen verantwortlich. 
+Gesetzen verantwortlich. {"\n"}
 Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, 
 übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, 
-die auf eine rechtswidrige Tätigkeit hinweisen. 
+die auf eine rechtswidrige Tätigkeit hinweisen. {"\n"}
 Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen 
 Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt
- der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden 
- von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
-
-            </Text>
+ der Kenntnis einer konkreten Rechtsverletzung möglich. {"\n"}
+ Bei Bekanntwerden  von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen. {"\n"}
+</Text>
+           
         </ScrollView>
     )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    textbody:{
+        flex:1,
+        textAlign:"left",
+    }
+})

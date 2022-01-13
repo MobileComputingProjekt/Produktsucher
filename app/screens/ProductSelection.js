@@ -16,7 +16,7 @@ import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNat
 import { useNavigationn, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 export default function ProductSelection({ route, navigation }) {
-const { MapPath, MarketName, Products} = route.params;
+const { Products} = route.params;
     return (
         <View style={styles.container}>
         <View style={styles.headermenu}>
@@ -56,8 +56,8 @@ const { MapPath, MarketName, Products} = route.params;
                 <TouchableOpacity 
                     activeOpacity={.8} 
                     style={styles.buttonSelect}
-                    onPress={()=> navigation.navigate('Map')}>
-                <Text style={styles.white}>Direkt anzeigen</Text>
+                    onPress={()=> navigation.navigate('Map', item)}>
+                    <Text style={styles.white}>Direkt anzeigen</Text>
                 </TouchableOpacity>
                 </View>
             )}
@@ -65,24 +65,26 @@ const { MapPath, MarketName, Products} = route.params;
 
 
         <View style={styles.footermenu}>
-        <TouchableOpacity 
-            onPress={()=> navigation.navigate('Market')}
-            activeOpacity={.8}
-            style={[styles.whitemenu]}>
-            <Text style={[styles.white]}>Markt</Text>
-            </TouchableOpacity>
+
             <TouchableOpacity 
-            onPress={()=> navigation.navigate('Map')}
-            activeOpacity={.8}
-            style={[styles.whitemenu]}>
-            <Text style={[styles.white]}>Karte</Text>
+                onPress={()=> navigation.navigate('Market')}
+                activeOpacity={.8}
+                style={[styles.whitemenu]}>
+                <Text style={[styles.white]}>Markt</Text>
             </TouchableOpacity>
 
             <TouchableOpacity 
-            onPress={()=> navigation.navigate('List')}
-            activeOpacity={.8}
-            style={[styles.whitemenu]}>
-            <Text style={[styles.white]}>Einkaufsliste</Text>
+                onPress={()=> navigation.navigate('Map', MapPath)}
+                activeOpacity={.8}
+                style={[styles.whitemenu]}>
+                <Text style={[styles.white]}>Karte</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity 
+                onPress={()=> navigation.navigate('List')}
+                activeOpacity={.8}
+                style={[styles.whitemenu]}>
+                <Text style={[styles.white]}>Einkaufsliste</Text>
             </TouchableOpacity>
         
         </View>
@@ -96,55 +98,54 @@ const styles = StyleSheet.create({
         backgroundColor:"#fbfcff"
     },
    headermenu:{
-    flex:0.1,
-    backgroundColor:'#1e6c8e',
-    flexDirection:"row",
-    justifyContent:"space-around",
-    alignItems:"center",
+        flex:0.1,
+        backgroundColor:'#1e6c8e',
+        flexDirection:"row",
+        justifyContent:"space-around",
+        alignItems:"center",
 
    },
-   textbody:{
-    flex: 1,
-    marginTop: 15,
-    marginLeft:15,
-    marginRight:15,
+    textbody:{
+        flex: 1,
+        marginTop: 15,
+        marginLeft:15,
+        marginRight:15,
    },
    footermenu:{
-    flex:0.1,
-    backgroundColor:'#1e6c8e',
-    flexDirection:"row",
-    justifyContent:"space-around",
-    alignItems:"center",
+        flex:0.1,
+        backgroundColor:'#1e6c8e',
+        flexDirection:"row",
+        justifyContent:"space-around",
+        alignItems:"center",
    },
    marketProduct:{
-    flexDirection:"row",
-    flex:0.15,
-    justifyContent:"flex-start",
-    backgroundColor:"#274156",
-    margin:5,
-    borderWidth:1
-    
+        flexDirection:"row",
+        flex:0.15,
+        justifyContent:"flex-start",
+        backgroundColor:"#274156",
+        margin:5,
+        borderWidth:1
    },
    logo:{
-    resizeMode:"contain",
-    width: 80, 
-    height: 80,
+        resizeMode:"contain",
+        width: 80, 
+        height: 80,
    },
    headerLogo:{
-    resizeMode: "contain",
-    height:40,
-    width:40
+        resizeMode: "contain",
+        height:40,
+        width:40
    },
    text:{
-       flex:3,
-       color:"white",
-       justifyContent:"center",
-       justifyContent:"space-between",
-      padding:5,
+        flex:3,
+        color:"white",
+        justifyContent:"center",
+        justifyContent:"space-between",
+        padding:5,
    },
    productButtons:{
-       flexDirection:'row',
-       flex:0.75,
+        flexDirection:'row',
+        flex:0.75,
    },
    buttonSelect:{
         margin:10,
@@ -155,25 +156,25 @@ const styles = StyleSheet.create({
 
    },
    searchBar:{
-    width:"50%",
-    height:30,
-    margin:10,
-    alignItems: "center",
-    backgroundColor: "#d0ccd0",
-    borderColor:'rgba(0,0,0,0.2)',
-    borderRadius:20,
-    textAlignVertical:"center",
-    padding:5
+        width:"50%",
+        height:30,
+        margin:10,
+        alignItems: "center",
+        backgroundColor: "#d0ccd0",
+        borderColor:'rgba(0,0,0,0.2)',
+        borderRadius:20,
+        textAlignVertical:"center",
+        padding:5
   },
    white: {
-    color: 'white',
+        color: 'white',
   },
   whitemenu: {
-    color: 'white',
-    flex:0.3,
-    textAlign:"center",
-    padding:15,
-    borderWidth: 1,
-    backgroundColor:"#274156"
+        color: 'white',
+        flex:0.3,
+        textAlign:"center",
+        padding:15,
+        borderWidth: 1,
+        backgroundColor:"#274156"
   },
 })

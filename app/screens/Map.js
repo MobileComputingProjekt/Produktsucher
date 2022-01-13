@@ -8,12 +8,15 @@ import {
     Button, 
     Alert, 
     TouchableOpacity,
+    ImageBackground,
+    FlatList,
     SafeAreaView
 } from 'react-native'
 import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes'
 import { useNavigationn, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-export default function Map({ navigation }) {
+export default function Map({ route, navigation }) {
+    const {Products} = route.params;
     return (
         <View style={styles.container}>
         <View style={styles.headermenu}>
@@ -23,11 +26,21 @@ export default function Map({ navigation }) {
             <Text style={[styles.whitemenu]}>Einkaufsliste menü zeigen</Text>
             
         </View>
-        <View style={styles.textbody}>
+        
+<FlatList
+        data={Products}
+        renderItem={({ item }) => (
+            <ImageBackground style={styles.textbody}
+            resizeMode='cover'
+            source={item.MapPath}
+            />
+            )}
+        />
+      
 
        
 
-        </View>
+  
         <View style={styles.footermenu}>
 
         
