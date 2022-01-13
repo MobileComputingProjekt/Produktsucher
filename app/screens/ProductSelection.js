@@ -8,18 +8,20 @@ import {
     Button, 
     Alert, 
     TouchableOpacity,
+    FlatList,
     ScrollView,
     SafeAreaView
 } from 'react-native'
 import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes'
 import { useNavigationn, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-export default function ProductSelection({ navigation }) {
+export default function ProductSelection({ route, navigation }) {
+const { key, MapPath, MarketName, MarketStreet, Products} = route.params;
     return (
         <View style={styles.container}>
         <View style={styles.headermenu}>
 
-            <Text style={[styles.white]}>Logo(Icon)</Text>
+            <Image source = {require("../assets/icon.png")} style={[styles.headerLogo]}/>
             <Text style={[styles.white]}>Produkt auswählen</Text>
             <TouchableOpacity
             
@@ -33,35 +35,34 @@ export default function ProductSelection({ navigation }) {
             
         </View>
 
-        <ScrollView style={styles.textbody}>
-        <View style={styles.marketProduct}>
+       
 
-        <Image source = {require("../assets/icon.png")}style={styles.logo}/>
+        <FlatList 
+        style = {styles.textbody}
+            data={Products}
+            renderItem={({ item }) => (
+                
+                <View style={styles.marketProduct}>
+                
+                <Image source = {require("../assets/icon.png")}style={styles.logo}/>
+                    <View style={styles.text}>
+                        <Text style={[styles.white]}>{item.ExampleProduct}</Text>
+                        <Text style={[styles.white]}>{item.ExamplePrice}</Text>
+                    </View>   
+                <TouchableOpacity activeOpacity={.8} style={styles.buttonSelect}>
+                    <Text style={styles.white}>Zu Einkaufsliste hinzufügen</Text>
+                </TouchableOpacity>
 
-        <View style={styles.text}>
+                <TouchableOpacity 
+                    activeOpacity={.8} 
+                    style={styles.buttonSelect}
+                    onPress={()=> navigation.navigate('Map')}>
+                <Text style={styles.white}>Direkt anzeigen</Text>
+                </TouchableOpacity>
+                </View>
+            )}
+        />
 
-        <Text style={[styles.white]}>DB Produkt Name</Text>
-        <Text style={[styles.white]}>DB Produkt Preis</Text>
-
-        <View style={styles.productButtons}>
-
-        <TouchableOpacity activeOpacity={.8} style={styles.buttonSelect}>
-        <Text style={styles.white}>Zu Einkaufsliste hinzufügen</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity 
-        activeOpacity={.8} 
-        style={styles.buttonSelect}
-        onPress={()=> navigation.navigate('Map')}>
-        <Text style={styles.white}>Direkt anzeigen</Text>
-        </TouchableOpacity>
-
-        </View>
-        </View>
-        
-        
-        </View> 
-        </ScrollView>
 
         <View style={styles.footermenu}>
         <TouchableOpacity 
@@ -120,17 +121,22 @@ const styles = StyleSheet.create({
     flex:0.15,
     justifyContent:"flex-start",
     backgroundColor:"#274156",
+    margin:5,
+    borderWidth:1
     
    },
    logo:{
     resizeMode:"contain",
-    flex:4, 
-    width: undefined, 
-    height: undefined,
-    backgroundColor:"black",
+    width: 80, 
+    height: 80,
+   },
+   headerLogo:{
+    resizeMode: "contain",
+    height:40,
+    width:40
    },
    text:{
-       flex:10,
+       flex:3,
        color:"white",
        justifyContent:"center",
        justifyContent:"space-between",
@@ -141,10 +147,10 @@ const styles = StyleSheet.create({
        flex:0.75,
    },
    buttonSelect:{
-       flex:0.5,
-       marginRight:5,
+        margin:10,
         textAlignVertical:"center",
         backgroundColor:"#1c6e8c",
+        flex:3
         
 
    },
