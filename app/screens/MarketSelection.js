@@ -42,7 +42,7 @@ export default function MarketSelection({ navigation }) {
             
             
         },
-        {
+        { 
             key:'Map2Key',
             MapPath: '../assets/Map2.png',
             MarketName: 'Baumarkt XY',
