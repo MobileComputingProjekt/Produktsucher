@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -17,7 +17,25 @@ import { useNavigationn, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 export default function ProductSelection({ route, navigation }) {
-  const { Products } = route.params;
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+  const getProducts = async () => {
+    try {
+      const response = await fetch(
+        "https://testmarkets.free.beeceptor.com/m1products"
+      );
+      const json = await response.json();
+      setData(json.data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
   return (
     <View style={styles.container}>
       <View style={styles.headermenu}>
@@ -27,11 +45,7 @@ export default function ProductSelection({ route, navigation }) {
         />
         <Text style={[styles.white]}>Produkt auswählen</Text>
         <TouchableOpacity
-          onPress={() =>
-            console.log(
-              "Produkt wird hier gesucht todo: Suche aus DB via 'like' & Marktname"
-            )
-          }
+          onPress={() => console.log("test")}
           activeOpacity={0.8}
           style={styles.searchBar}
         >
@@ -41,7 +55,7 @@ export default function ProductSelection({ route, navigation }) {
 
       <FlatList
         style={styles.textbody}
-        data={Products}
+        data={data}
         renderItem={({ item }) => (
           <View style={styles.marketProduct}>
             <Image source={require("../assets/icon.png")} style={styles.logo} />

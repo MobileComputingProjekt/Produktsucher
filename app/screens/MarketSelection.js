@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -8,6 +8,7 @@ import {
   Button,
   Alert,
   TouchableOpacity,
+  ActivityIndicator,
   ScrollView,
   FlatList,
   SafeAreaView,
@@ -15,105 +16,28 @@ import {
 import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 import { useNavigationn, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 export default function MarketSelection({ navigation }) {
-  const [Market, setMarket] = useState([
-    {
-      id: "1",
-      MarketName: "Supermarkt XY",
-      MarketStreet: "Hauptstraße 12",
-      MarketArea: "50667 Köln",
-      MarketLogo: require("../assets/icon.png"),
-      Products: [
-        {
-          id: "1.1",
-          ExampleProduct: "Frischer Hummer",
-          ExamplePrice: "39,99€",
-          MapData: [
-            {
-              id: "1.1.1",
-              MapPath: require("../assets/Map1.png"),
-              xCoord: 21,
-              yCoord: 21,
-            },
-          ],
-        },
-        {
-          id: "1.2",
-          ExampleProduct: "BIO Nudeln",
-          ExamplePrice: "2,50€",
-          MapData: [
-            {
-              id: "1.1.2",
-              MapPath: require("../assets/Map1.png"),
-              xCoord: 21,
-              yCoord: 21,
-            },
-          ],
-        },
-        {
-          id: "1.3",
-          ExampleProduct: "Seelachsmuß",
-          ExamplePrice: "3,99€",
-          MapData: [
-            {
-              id: "1.1.3",
-              MapPath: require("../assets/Map1.png"),
-              xCoord: 21,
-              yCoord: 21,
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: "2",
-      MarketName: "OBI",
-      MarketStreet: "Erasmusweg 34",
-      MarketArea: "46325 Borken",
-      MarketLogo: require("../assets/obi.png"),
-      Products: [
-        {
-          id: "2.1",
-          ExampleProduct: "Hammer",
-          ExamplePrice: "24,99€",
-          MapData: [
-            {
-              id: "2.1.1",
-              MapPath: require("../assets/Map1.png"),
-              xCoord: 21,
-              yCoord: 21,
-            },
-          ],
-        },
-        {
-          id: "2.2",
-          ExampleProduct: "Handsäge",
-          ExamplePrice: "49,99€",
-          MapData: [
-            {
-              id: "2.2.1",
-              MapPath: require("../assets/Map1.png"),
-              xCoord: 21,
-              yCoord: 21,
-            },
-          ],
-        },
-        {
-          id: "2.3",
-          ExampleProduct: "Gartenvlies",
-          ExamplePrice: "54,99€",
-          MapData: [
-            {
-              id: "2.3.1",
-              MapPath: require("../assets/Map1.png"),
-              xCoord: 21,
-              yCoord: 21,
-            },
-          ],
-        },
-      ],
-    },
-  ]);
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+
+  const getMarkets = async () => {
+    try {
+      const response = await fetch(
+        "https://testmarkets.free.beeceptor.com/market"
+      );
+      const json = await response.json();
+      setData(json.data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getMarkets();
+  }, []);
   return (
     <View style={styles.container}>
       <View style={styles.headermenu}>
@@ -132,25 +56,33 @@ export default function MarketSelection({ navigation }) {
           <Text>Markt Suchen</Text>
         </TouchableOpacity>
       </View>
-
-      <FlatList
-        style={styles.textbody}
-        data={Market}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Product", item)}
-            activeOpacity={0.8}
-            style={styles.marketObject}
-          >
-            <Image source={item.MarketLogo} style={styles.logo} />
-            <View style={styles.text}>
-              <Text style={[styles.white]}>{item.MarketName}</Text>
-              <Text style={[styles.white]}>{item.MarketStreet}</Text>
-              <Text style={[styles.white]}>{item.MarketArea}</Text>
-            </View>
-          </TouchableOpacity>
-        )}
-      />
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : (
+        <FlatList
+          style={styles.textbody}
+          data={data}
+          keyExtractor={({ id }, index) => id}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("Product", {
+                  linkEnding: item.productPath,
+                })
+              }
+              activeOpacity={0.8}
+              style={styles.marketObject}
+            >
+              <Image source={{ uri: item.marketLogo }} style={styles.logo} />
+              <View style={styles.text}>
+                <Text style={[styles.white]}>{item.marketName}</Text>
+                <Text style={[styles.white]}>{item.marketStreet}</Text>
+                <Text style={[styles.white]}>{item.marketArea}</Text>
+              </View>
+            </TouchableOpacity>
+          )}
+        />
+      )}
 
       <View style={styles.footermenu}>
         <TouchableOpacity

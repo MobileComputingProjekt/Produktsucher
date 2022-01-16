@@ -18,8 +18,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Position from "react-native/Libraries/Components/Touchable/Position";
 
 export default function Map({ navigation, route }) {
-  fetch('https://produktsucher.free.beeceptor.com/market')
-          .then(res => console.log(res))
+
   const { map } = route.params
   return (
     <View style={styles.container}>
@@ -29,13 +28,7 @@ export default function Map({ navigation, route }) {
           style={[styles.headerLogo]}
         />
         <Text style={[styles.headerText]}>Karte Markt(von Db)</Text>
-        <TouchableOpacity
-          onPress={() => console.log(fetch('https://produktsucher.free.beeceptor.com/market'))}
-          activeOpacity={0.8}
-          style={[styles.whitemenu]}
-        >
-          <Text style={[styles.white]}>Test RouteVals</Text>
-        </TouchableOpacity>
+       
       </View>
 
       <View style={styles.textbody}>
