@@ -1,5 +1,4 @@
 import React from "react";
-import { View } from "react-native";
 import StartScreen from "./app/screens/StartScreen";
 import Register from "./app/screens/Register";
 import Impressum from "./app/screens/Impressum";

@@ -5,12 +5,9 @@ import {
   View,
   Image,
   StatusBar,
-  Button,
-  Alert,
   TouchableOpacity,
 } from "react-native";
-import { useNavigationn, NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 export default function StartScreen({ navigation }) {
   return (
     <View style={styles.container}>

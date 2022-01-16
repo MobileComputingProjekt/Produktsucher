@@ -1,21 +1,15 @@
 import React from "react";
 import {
   StyleSheet,
-  Platform,
   Text,
   Image,
   TextInput,
   View,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
-  StatusBar,
-  Button,
-  Alert,
   Keyboard,
   TouchableOpacity,
 } from "react-native";
-import { useNavigationn, NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 export default function Register({ navigation }) {
   return (

@@ -4,18 +4,11 @@ import {
   Text,
   View,
   Image,
-  StatusBar,
-  Button,
-  Alert,
   TouchableOpacity,
   ActivityIndicator,
-  ScrollView,
   FlatList,
-  SafeAreaView,
 } from "react-native";
-import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
-import { useNavigationn, NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 
 export default function MarketSelection({ navigation }) {
   const [isLoading, setLoading] = useState(true);
@@ -24,7 +17,7 @@ export default function MarketSelection({ navigation }) {
   const getMarkets = async () => {
     try {
       const response = await fetch(
-        "https://testmarkets.free.beeceptor.com/market"
+        "https://testmarkets2.free.beeceptor.com/market"
       );
       const json = await response.json();
       setData(json.data);
@@ -66,9 +59,7 @@ export default function MarketSelection({ navigation }) {
           renderItem={({ item }) => (
             <TouchableOpacity
               onPress={() =>
-                navigation.navigate("Product", {
-                  linkEnding: item.productPath,
-                })
+                navigation.navigate("Product", item)
               }
               activeOpacity={0.8}
               style={styles.marketObject}

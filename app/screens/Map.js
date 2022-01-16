@@ -1,25 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   StyleSheet,
   Text,
   View,
   Image,
-  StatusBar,
-  Button,
-  Alert,
   TouchableOpacity,
   ImageBackground,
-  FlatList,
-  SafeAreaView,
 } from "react-native";
+import { FlatList } from "react-native-web";
 import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
-import { useNavigationn, NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Position from "react-native/Libraries/Components/Touchable/Position";
+
+
 
 export default function Map({ navigation, route }) {
-
-  const { map } = route.params
+  const {mapPath} = route.params;
+  const Path = useRef("")
+  useEffect(() =>{
+    Path.current = Path.current + productPath
+  },[]);
   return (
     <View style={styles.container}>
       <View style={styles.headermenu}>
@@ -32,17 +30,25 @@ export default function Map({ navigation, route }) {
       </View>
 
       <View style={styles.textbody}>
-      
-        <ImageBackground
-          source={require("../assets/Map1.png")}
-          resizeMode="contain"
-          style={styles.image}
-        >
-          <Image
-            style={[styles.testLocatedItem]}
-            source={require("../assets/Locator.png")}
-          />
-        </ImageBackground>
+      <FlatList
+      data={mapPath}
+            renderItem={({ item }) => (  
+              <backgroundImage
+              source = {{uri: item}}
+              style={styles.logo}>
+
+              </backgroundImage>
+            )}
+      >
+
+      </FlatList>
+      <backgroundImage
+      source={{
+          uri: Path.current,
+        }}
+      >
+
+      </backgroundImage>
       </View>
 
       <View style={styles.footermenu}>
@@ -129,7 +135,7 @@ const styles = StyleSheet.create({
     height: 20,
     width: 20,
     position: "absolute",
-    top: 110,
-    right: 200,
+    top: "36%",
+    left:"40%"
   },
 });

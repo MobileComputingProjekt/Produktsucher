@@ -4,21 +4,18 @@ import {
   Text,
   View,
   Image,
-  StatusBar,
-  Button,
-  Alert,
   TouchableOpacity,
   ScrollView,
-  SafeAreaView,
 } from "react-native";
-import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
-import { useNavigationn, NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-export default function ShoppingList({ navigation }) {
+
+export default function ShoppingList({ navigation, route }) {
   return (
     <View style={styles.container}>
       <View style={styles.headermenu}>
-        <Text style={[styles.whitetext]}>Logo</Text>
+      <Image
+          source={require("../assets/icon.png")}
+          style={[styles.headerLogo]}
+        />
         <Text style={[styles.whitetextMoreSpace]}>Einkaufsliste</Text>
       </View>
       <ScrollView style={styles.textbody}>
@@ -42,7 +39,7 @@ export default function ShoppingList({ navigation }) {
           <Text style={[styles.white]}>Markt</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Map")}
+          onPress={() => navigation.navigate("Map", {route})}
           activeOpacity={0.8}
           style={[styles.whitemenu]}
         >
@@ -121,6 +118,11 @@ const styles = StyleSheet.create({
     width: undefined,
     height: undefined,
     backgroundColor: "black",
+  },
+  headerLogo: {
+    resizeMode: "contain",
+    height: 40,
+    width: 40,
   },
   text: {
     flex: 10,

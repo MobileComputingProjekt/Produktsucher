@@ -1,28 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   StyleSheet,
   Text,
   View,
   Image,
-  StatusBar,
-  Button,
-  Alert,
   TouchableOpacity,
   FlatList,
-  ScrollView,
-  SafeAreaView,
 } from "react-native";
-import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
-import { useNavigationn, NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 
 export default function ProductSelection({ route, navigation }) {
+  const {productPath} = route.params;
+  const combinedUrl = useRef("https://testmarkets2.free.beeceptor.com")
+  useEffect(() =>{
+    combinedUrl.current = combinedUrl.current + productPath
+  },[]);
+
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const getProducts = async () => {
     try {
       const response = await fetch(
-        "https://testmarkets.free.beeceptor.com/m1products"
+      combinedUrl.current
       );
       const json = await response.json();
       setData(json.data);
@@ -37,6 +36,7 @@ export default function ProductSelection({ route, navigation }) {
     getProducts();
   }, []);
   return (
+
     <View style={styles.container}>
       <View style={styles.headermenu}>
         <Image
@@ -52,7 +52,6 @@ export default function ProductSelection({ route, navigation }) {
           <Text>Produkt Suchen</Text>
         </TouchableOpacity>
       </View>
-
       <FlatList
         style={styles.textbody}
         data={data}

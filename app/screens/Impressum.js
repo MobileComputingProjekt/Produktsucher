@@ -2,16 +2,9 @@ import React from "react";
 import {
   StyleSheet,
   Text,
-  View,
-  Image,
-  StatusBar,
-  Button,
-  Alert,
   ScrollView,
-  TouchableOpacity,
 } from "react-native";
-import { useNavigationn, NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 export default function Impressum({ navigation }) {
   return (
     <ScrollView style={styles.container}>
