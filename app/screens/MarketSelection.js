@@ -17,7 +17,7 @@ export default function MarketSelection({ navigation }) {
   const getMarkets = async () => {
     try {
       const response = await fetch(
-        "https://testmarkets2.free.beeceptor.com/market"
+        "https://testmarket3.free.beeceptor.com/market"
       );
       const json = await response.json();
       setData(json.data);

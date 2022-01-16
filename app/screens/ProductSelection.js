@@ -11,7 +11,7 @@ import {
 
 export default function ProductSelection({ route, navigation }) {
   const {productPath} = route.params;
-  const combinedUrl = useRef("https://testmarkets2.free.beeceptor.com")
+  const combinedUrl = useRef("https://testmarket3.free.beeceptor.com")
   useEffect(() =>{
     combinedUrl.current = combinedUrl.current + productPath
   },[]);
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     width: 40,
   },
   text: {
-    flex: 3,
+    flex: 4,
     color: "white",
     justifyContent: "center",
     justifyContent: "space-between",

@@ -9,17 +9,18 @@ export default function Impressum({ navigation }) {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.textbody}>
-        Impressum {"\n"}
+       <Text style={styles.titleText}>Impressum {"\n"}</Text> 
         Angaben gemäß § 5 TMG {"\n"}
         Vertreten durch: {"\n"}
         Torsten Haas {"\n"}
         Khalid Benmahria {"\n"}
         Kontakt: {"\n"}
         E-Mail: torsten.haas@stud.hs-ruhrwest.de {"\n"}
+        E-Mail: khalid.benmahria@stud.hs-ruhrwest.de
       </Text>
       <Text style={styles.textbody}>
-        Haftungsausschluss: {"\n"}
-        Haftung für Inhalte {"\n"}
+        <Text style={styles.titleText}>Haftungsausschluss: {"\n"}</Text>
+        Haftung für Inhalte: {"\n"}
         Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. {"\n"}
         Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können
         wir jedoch keine Gewähr übernehmen. {"\n"}
@@ -51,4 +52,8 @@ const styles = StyleSheet.create({
     padding:10,
     
   },
+  titleText: {
+    fontSize: 20,
+    fontWeight: "bold"
+  }
 });

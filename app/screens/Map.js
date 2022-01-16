@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, {useRef, useEffect} from "react";
 import {
   StyleSheet,
   Text,
@@ -7,16 +7,14 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
-import { FlatList } from "react-native-web";
-import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
 
 
 export default function Map({ navigation, route }) {
   const {mapPath} = route.params;
-  const Path = useRef("")
+  const combinedUrl = useRef("")
   useEffect(() =>{
-    Path.current = Path.current + productPath
+    combinedUrl.current = combinedUrl.current + mapPath
   },[]);
   return (
     <View style={styles.container}>
@@ -30,25 +28,17 @@ export default function Map({ navigation, route }) {
       </View>
 
       <View style={styles.textbody}>
-      <FlatList
-      data={mapPath}
-            renderItem={({ item }) => (  
-              <backgroundImage
-              source = {{uri: item}}
-              style={styles.logo}>
-
-              </backgroundImage>
-            )}
-      >
-
-      </FlatList>
-      <backgroundImage
-      source={{
-          uri: Path.current,
-        }}
-      >
-
-      </backgroundImage>
+      <Text>{JSON.stringify(mapPath)}</Text>
+        <ImageBackground
+          source={require("../assets/Map1.png")}
+          resizeMode="contain"
+          style={styles.image}
+        >
+          <Image
+            style={[styles.testLocatedItem]}
+            source={require("../assets/Locator.png")}
+          />
+        </ImageBackground>
       </View>
 
       <View style={styles.footermenu}>
