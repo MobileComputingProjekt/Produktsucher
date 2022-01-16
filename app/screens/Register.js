@@ -14,51 +14,48 @@ import {
 export default function Register({ navigation }) {
   return (
     <View style={styles.container}>
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.emptySpace}></View>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.emptySpace}></View>
       </TouchableWithoutFeedback>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.registerSpace}>
-        <Image source={require("../assets/icon.png")} style={styles.logo} />
+        <View style={styles.registerSpace}>
+          <Image source={require("../assets/icon.png")} style={styles.logo} />
 
-        <KeyboardAvoidingView>
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.registerFields}>
+          <KeyboardAvoidingView>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+              <View style={styles.registerFields}>
+                <TextInput
+                  style={styles.registerElementsInput}
+                  placeholder="Benutzername"
+                  keyboardType="default"
+                />
 
-          <TextInput
-            style={styles.registerElementsInput}
-            placeholder="Benutzername"
-            keyboardType="default"
-          />
+                <TextInput
+                  style={styles.registerElementsInput}
+                  placeholder="Passwort"
+                  keyboardType="default"
+                />
 
-          <TextInput
-            style={styles.registerElementsInput}
-            placeholder="Passwort"
-            keyboardType="default"
-          />
+                <TextInput
+                  style={styles.registerElementsInput}
+                  placeholder="Passwort wiederholen"
+                  keyboardType="default"
+                />
 
-          <TextInput
-            style={styles.registerElementsInput}
-            placeholder="Passwort wiederholen"
-            keyboardType="default"
-          />
-
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Register")}
-            activeOpacity={0.8}
-            style={styles.registerButton}
-            onPress={() => navigation.navigate("Market")}
-          >
-            <Text style={styles.white}>Registrieren</Text>
-          </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Register")}
+                  activeOpacity={0.8}
+                  style={styles.registerButton}
+                  onPress={() => navigation.navigate("Market")}
+                >
+                  <Text style={styles.white}>Registrieren</Text>
+                </TouchableOpacity>
+              </View>
+            </TouchableWithoutFeedback>
+          </KeyboardAvoidingView>
         </View>
-      
-        </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
-      </View>
       </TouchableWithoutFeedback>
     </View>
-
   );
 }
 
@@ -77,7 +74,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     height: "30%",
-    
+
     resizeMode: "contain",
   },
   registerFields: {
@@ -95,7 +92,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   registerElementsInput: {
-    height:40,
+    height: 40,
     alignContent: "center",
     backgroundColor: "#d0ccd0",
 

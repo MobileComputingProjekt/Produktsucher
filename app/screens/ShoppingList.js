@@ -12,7 +12,7 @@ export default function ShoppingList({ navigation, route }) {
   return (
     <View style={styles.container}>
       <View style={styles.headermenu}>
-      <Image
+        <Image
           source={require("../assets/icon.png")}
           style={[styles.headerLogo]}
         />
@@ -39,7 +39,7 @@ export default function ShoppingList({ navigation, route }) {
           <Text style={[styles.white]}>Markt</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate("Map", {route})}
+          onPress={() => navigation.navigate("Map", { route })}
           activeOpacity={0.8}
           style={[styles.whitemenu]}
         >

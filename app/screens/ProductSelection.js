@@ -8,21 +8,18 @@ import {
   FlatList,
 } from "react-native";
 
-
 export default function ProductSelection({ route, navigation }) {
-  const {productPath} = route.params;
-  const combinedUrl = useRef("https://testmarket3.free.beeceptor.com")
-  useEffect(() =>{
-    combinedUrl.current = combinedUrl.current + productPath
-  },[]);
+  const { productPath } = route.params;
+  const combinedUrl = useRef("https://testmarket3.free.beeceptor.com");
+  useEffect(() => {
+    combinedUrl.current = combinedUrl.current + productPath;
+  }, []);
 
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const getProducts = async () => {
     try {
-      const response = await fetch(
-      combinedUrl.current
-      );
+      const response = await fetch(combinedUrl.current);
       const json = await response.json();
       setData(json.data);
     } catch (error) {
@@ -36,7 +33,6 @@ export default function ProductSelection({ route, navigation }) {
     getProducts();
   }, []);
   return (
-
     <View style={styles.container}>
       <View style={styles.headermenu}>
         <Image

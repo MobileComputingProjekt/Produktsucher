@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from "react";
+import React, { useRef, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -8,11 +8,9 @@ import {
   ImageBackground,
 } from "react-native";
 
-
-
 export default function Map({ navigation, route }) {
-  const {mapPath, xCoord, yCoord} = route.params;
-  
+  const { mapPath, xCoord, yCoord } = route.params;
+
   return (
     <View style={styles.container}>
       <View style={styles.headermenu}>
@@ -21,22 +19,21 @@ export default function Map({ navigation, route }) {
           style={[styles.headerLogo]}
         />
         <Text style={[styles.headerText]}>Karte Markt(von Db)</Text>
-       
       </View>
       <View style={styles.textbody}>
         <ImageBackground
-          source={{uri:mapPath}}
+          source={{ uri: mapPath }}
           resizeMode="contain"
           style={styles.image}
         >
           <Image
             style={{
-              position:"absolute",
+              position: "absolute",
               resizeMode: "contain",
               height: 20,
               width: 20,
               top: xCoord,
-              left: yCoord
+              left: yCoord,
             }}
             source={require("../assets/Locator.png")}
           />
@@ -128,7 +125,6 @@ const styles = StyleSheet.create({
     width: 20,
     position: "absolute",
     top: "36%",
-    left:"40%"
+    left: "40%",
   },
-
 });

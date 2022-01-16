@@ -1,15 +1,11 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  ScrollView,
-} from "react-native";
+import { StyleSheet, Text, ScrollView } from "react-native";
 
 export default function Impressum({ navigation }) {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.textbody}>
-       <Text style={styles.titleText}>Impressum {"\n"}</Text> 
+        <Text style={styles.titleText}>Impressum {"\n"}</Text>
         Angaben gemäß § 5 TMG {"\n"}
         Vertreten durch: {"\n"}
         Torsten Haas {"\n"}
@@ -42,18 +38,17 @@ export default function Impressum({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        backgroundColor:"#fbfcff"
-    },
+  container: {
+    flex: 1,
+    backgroundColor: "#fbfcff",
+  },
   textbody: {
     flex: 1,
     textAlign: "left",
-    padding:10,
-    
+    padding: 10,
   },
   titleText: {
     fontSize: 20,
-    fontWeight: "bold"
-  }
+    fontWeight: "bold",
+  },
 });

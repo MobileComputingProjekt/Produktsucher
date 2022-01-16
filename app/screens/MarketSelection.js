@@ -9,7 +9,6 @@ import {
   FlatList,
 } from "react-native";
 
-
 export default function MarketSelection({ navigation }) {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -58,9 +57,7 @@ export default function MarketSelection({ navigation }) {
           keyExtractor={({ id }, index) => id}
           renderItem={({ item }) => (
             <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("Product", item)
-              }
+              onPress={() => navigation.navigate("Product", item)}
               activeOpacity={0.8}
               style={styles.marketObject}
             >
