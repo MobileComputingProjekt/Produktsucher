@@ -22,7 +22,7 @@ export default function ProductSelection({ route, navigation }) {
   const getProducts = async () => {
     try {
       const response = await fetch(
-        "https://testmarkets.free.beeceptor.com/m1products"
+        "https://produktsucher3.free.beeceptor.com"
       );
       const json = await response.json();
       setData(json.data);

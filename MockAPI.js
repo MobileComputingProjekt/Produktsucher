@@ -1,4 +1,4 @@
-const apiBaseUrl = "https://produktsucher.free.beeceptor.com";
+const apiBaseUrl = "https://produktsucher1.free.beeceptor.com";
 
 function getProducts(){
 	const endpoint = "/market";

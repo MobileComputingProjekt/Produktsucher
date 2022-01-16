@@ -13,6 +13,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -21,6 +22,7 @@ export default function App() {
       >
         <Stack.Screen name="Start" component={StartScreen} />
         <Stack.Screen name="Impressum" component={Impressum} />
+        <Stack.Screen name="login" component={Register} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Market" component={MarketSelection} />
         <Stack.Screen name="Product" component={ProductSelection} />

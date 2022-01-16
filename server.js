@@ -30,7 +30,7 @@ app.get('/MockAPI', cors(), (req, res) => {
   }]);
   app.get("/market", (req, res) => {
     request(
-      "https://produktsucher.free.beeceptor.com",
+      "https://produktsucher1.free.beeceptor.com",
       function(error, response, body) {
         if(!error && response.statusCode == 200) {
           console.log(response);

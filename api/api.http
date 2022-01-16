@@ -1,0 +1,13 @@
+
+  var url = new Request (https://produktsucher1.free.beeceptor.com/my/api/path);
+POST https://produktsucher1.free.beeceptor.com
+content-Type: application/json;charset
+
+{
+    "test": "value"
+}
+
+GET   https://produktsucher1.free.beeceptor.com
+{
+    "test":"value"
+}
