@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -15,6 +15,7 @@ import {
 import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 import { useNavigationn, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 export default function ProductSelection({ route, navigation }) {
   const { Products } = route.params;
   return (
@@ -73,7 +74,7 @@ export default function ProductSelection({ route, navigation }) {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate("Map", MapPath)}
+          onPress={() => navigation.navigate("Map")}
           activeOpacity={0.8}
           style={[styles.whitemenu]}
         >

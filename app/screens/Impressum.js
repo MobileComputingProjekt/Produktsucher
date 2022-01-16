@@ -14,7 +14,7 @@ import { useNavigationn, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 export default function Impressum({ navigation }) {
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
       <Text style={styles.textbody}>
         Impressum {"\n"}
         Angaben gemäß § 5 TMG {"\n"}
@@ -48,8 +48,14 @@ export default function Impressum({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+    container:{
+        flex:1,
+        backgroundColor:"#fbfcff"
+    },
   textbody: {
     flex: 1,
     textAlign: "left",
+    padding:10,
+    
   },
 });

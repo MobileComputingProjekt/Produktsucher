@@ -7,9 +7,11 @@ import MarketSelection from './app/screens/MarketSelection';
 import ProductSelection from './app/screens/ProductSelection';
 import Map from './app/screens/Map';
 import ShoppingList from './app/screens/ShoppingList';
+import Test from './app/screens/test'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import test from './app/screens/test';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -17,7 +19,7 @@ export default function App() {
   return (
     
     <NavigationContainer>
-     <Stack.Navigator initialRouteName="Start"  screenOptions={{headerShown: false}}>
+     <Stack.Navigator initialRouteName="Test"  screenOptions={{headerShown: false}}>
     
       <Stack.Screen name="Start" component={StartScreen}/>
       <Stack.Screen name="Impressum" component={Impressum}/>
@@ -26,6 +28,7 @@ export default function App() {
       <Stack.Screen name="Product" component={ProductSelection}/>
       <Stack.Screen name="Map" component={Map}/>
       <Stack.Screen name="List" component={ShoppingList}/>
+      <Stack.Screen name="Test" component={Test}/>
 
      </Stack.Navigator>
     </NavigationContainer>

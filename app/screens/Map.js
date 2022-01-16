@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -15,26 +15,42 @@ import {
 import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 import { useNavigationn, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-export default function Map({ route, navigation }) {
-  const { Products } = route.params;
+import Position from "react-native/Libraries/Components/Touchable/Position";
+
+export default function Map({ navigation, route }) {
+  fetch('https://produktsucher.free.beeceptor.com/market')
+          .then(res => console.log(res))
+  const { map } = route.params
   return (
     <View style={styles.container}>
       <View style={styles.headermenu}>
-        <Text style={[styles.white]}>Logo</Text>
-        <Text style={[styles.white]}>Karte Markt(von Db)</Text>
-        <Text style={[styles.whitemenu]}>Einkaufsliste menü zeigen</Text>
+        <Image
+          source={require("../assets/icon.png")}
+          style={[styles.headerLogo]}
+        />
+        <Text style={[styles.headerText]}>Karte Markt(von Db)</Text>
+        <TouchableOpacity
+          onPress={() => console.log(fetch('https://produktsucher.free.beeceptor.com/market'))}
+          activeOpacity={0.8}
+          style={[styles.whitemenu]}
+        >
+          <Text style={[styles.white]}>Test RouteVals</Text>
+        </TouchableOpacity>
       </View>
 
-      <FlatList
-        data={Products}
-        renderItem={({ item }) => (
-          <ImageBackground
-            style={styles.textbody}
-            resizeMode="cover"
-            source={item.MapPath}
+      <View style={styles.textbody}>
+      
+        <ImageBackground
+          source={require("../assets/Map1.png")}
+          resizeMode="contain"
+          style={styles.image}
+        >
+          <Image
+            style={[styles.testLocatedItem]}
+            source={require("../assets/Locator.png")}
           />
-        )}
-      />
+        </ImageBackground>
+      </View>
 
       <View style={styles.footermenu}>
         <TouchableOpacity
@@ -76,6 +92,17 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
   },
+  headerLogo: {
+    flex: 0.3,
+    resizeMode: "contain",
+    height: 40,
+    width: 40,
+  },
+  headerText: {
+    flex: 1,
+    color: "white",
+    textAlign: "center",
+  },
   textbody: {
     flex: 1,
     marginTop: 15,
@@ -99,5 +126,17 @@ const styles = StyleSheet.create({
   },
   white: {
     color: "white",
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  testLocatedItem: {
+    resizeMode: "contain",
+    height: 20,
+    width: 20,
+    position: "absolute",
+    top: 110,
+    right: 200,
   },
 });

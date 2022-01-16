@@ -18,56 +18,98 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 export default function MarketSelection({ navigation }) {
   const [Market, setMarket] = useState([
     {
-      key: "Map1Key",
+      id: "1",
       MarketName: "Supermarkt XY",
       MarketStreet: "Hauptstraße 12",
       MarketArea: "50667 Köln",
-      MarketLogo: "../assets/logo.png",
+      MarketLogo: require("../assets/icon.png"),
       Products: [
         {
-          key: "p1",
+          id: "1.1",
           ExampleProduct: "Frischer Hummer",
           ExamplePrice: "39,99€",
-          MapPath: "../assets/Map1.png",
+          MapData: [
+            {
+              id: "1.1.1",
+              MapPath: require("../assets/Map1.png"),
+              xCoord: 21,
+              yCoord: 21,
+            },
+          ],
         },
         {
-          key: "p2",
+          id: "1.2",
           ExampleProduct: "BIO Nudeln",
           ExamplePrice: "2,50€",
-          MapPath: "../assets/Map1.png",
+          MapData: [
+            {
+              id: "1.1.2",
+              MapPath: require("../assets/Map1.png"),
+              xCoord: 21,
+              yCoord: 21,
+            },
+          ],
         },
         {
-          key: "p3",
+          id: "1.3",
           ExampleProduct: "Seelachsmuß",
           ExamplePrice: "3,99€",
-          MapPath: "../assets/Map1.png",
+          MapData: [
+            {
+              id: "1.1.3",
+              MapPath: require("../assets/Map1.png"),
+              xCoord: 21,
+              yCoord: 21,
+            },
+          ],
         },
       ],
     },
     {
-      key: "Map2Key",
-      MarketName: "Baumarkt XY",
+      id: "2",
+      MarketName: "OBI",
       MarketStreet: "Erasmusweg 34",
       MarketArea: "46325 Borken",
-      MarketLogo: "../assets/logo.png",
+      MarketLogo: require("../assets/obi.png"),
       Products: [
         {
-          key: "p1",
+          id: "2.1",
           ExampleProduct: "Hammer",
           ExamplePrice: "24,99€",
-          MapPath: "../assets/Map2.png",
+          MapData: [
+            {
+              id: "2.1.1",
+              MapPath: require("../assets/Map1.png"),
+              xCoord: 21,
+              yCoord: 21,
+            },
+          ],
         },
         {
-          key: "p2",
+          id: "2.2",
           ExampleProduct: "Handsäge",
           ExamplePrice: "49,99€",
-          MapPath: "../assets/Map2.png",
+          MapData: [
+            {
+              id: "2.2.1",
+              MapPath: require("../assets/Map1.png"),
+              xCoord: 21,
+              yCoord: 21,
+            },
+          ],
         },
         {
-          key: "p3",
+          id: "2.3",
           ExampleProduct: "Gartenvlies",
           ExamplePrice: "54,99€",
-          MapPath: "../assets/Map2.png",
+          MapData: [
+            {
+              id: "2.3.1",
+              MapPath: require("../assets/Map1.png"),
+              xCoord: 21,
+              yCoord: 21,
+            },
+          ],
         },
       ],
     },
@@ -100,7 +142,7 @@ export default function MarketSelection({ navigation }) {
             activeOpacity={0.8}
             style={styles.marketObject}
           >
-            <Image source={require("../assets/icon.png")} style={styles.logo} />
+            <Image source={item.MarketLogo} style={styles.logo} />
             <View style={styles.text}>
               <Text style={[styles.white]}>{item.MarketName}</Text>
               <Text style={[styles.white]}>{item.MarketStreet}</Text>
