@@ -11,11 +11,8 @@ import {
 
 
 export default function Map({ navigation, route }) {
-  const {mapPath} = route.params;
-  const combinedUrl = useRef("")
-  useEffect(() =>{
-    combinedUrl.current = combinedUrl.current + mapPath
-  },[]);
+  const {mapPath, xCoord, yCoord} = route.params;
+  
   return (
     <View style={styles.container}>
       <View style={styles.headermenu}>
@@ -26,16 +23,21 @@ export default function Map({ navigation, route }) {
         <Text style={[styles.headerText]}>Karte Markt(von Db)</Text>
        
       </View>
-
       <View style={styles.textbody}>
-      <Text>{JSON.stringify(mapPath)}</Text>
         <ImageBackground
-          source={require("../assets/Map1.png")}
+          source={{uri:mapPath}}
           resizeMode="contain"
           style={styles.image}
         >
           <Image
-            style={[styles.testLocatedItem]}
+            style={{
+              position:"absolute",
+              resizeMode: "contain",
+              height: 20,
+              width: 20,
+              top: xCoord,
+              left: yCoord
+            }}
             source={require("../assets/Locator.png")}
           />
         </ImageBackground>
@@ -128,4 +130,5 @@ const styles = StyleSheet.create({
     top: "36%",
     left:"40%"
   },
+
 });
